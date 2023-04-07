@@ -1,0 +1,78 @@
+{
+    "folders": [
+        {
+            "path": ".."
+        }
+    ],
+    "settings": {
+        "python.envFile": "${workspaceFolder}/.vscode/.env",
+        "python.defaultInterpreterPath": "backend/venv/bin/python",
+        "python.terminal.activateEnvInCurrentTerminal": true,
+        "python.linting.flake8Enabled": true,
+        "python.linting.flake8Args": ["--config=backend/pyproject.toml"],
+        "python.linting.mypyEnabled": true,
+        "python.linting.mypyArgs": ["--config=backend/pyproject.toml"],
+        "flake8.args": ["--config=backend/pyproject.toml"],
+        "[python]": {
+            "editor.insertSpaces": true,
+            "editor.defaultFormatter": "ms-python.black-formatter",
+            "editor.formatOnSave": true,
+            "editor.codeActionsOnSave": {
+                "source.organizeImports": true
+            },
+        },
+        "isort.args":["--settings=backend/pyproject.toml"],
+        "terminal.integrated.env.osx": {
+            "PYTHONPATH": "${workspaceFolder}/backend/src/"
+        },
+        "python.formatting.provider": "none"
+    },
+    "launch": {
+        "version": "1.0.0",
+        "configurations": [
+            {
+                "name": "debug backend",
+                "cwd": "${workspaceFolder}/backend",
+                "type": "python",
+                "request": "launch",
+                "module": "personal_website",
+                "console": "internalConsole",
+                "justMyCode": false
+            },
+            {
+                "name": "run migrations",
+                "cwd": "${workspaceFolder}/backend",
+                "type": "python",
+                "request": "launch",
+                "module": "personal_website",
+                "args": [ 
+                    "--job", "alembic",
+                    "--job-args", "set_revision", "head",
+                ],
+                "console": "internalConsole",
+                "justMyCode": false
+            },
+            {
+                "name": "run tg sender",
+                "cwd": "${workspaceFolder}/backend",
+                "type": "python",
+                "request": "launch",
+                "module": "personal_website",
+                "args": [
+                    "--job", "pycron",
+                    "--job-args", "* * * * *", "TelegramMessagesSender"
+                ],
+                "console": "internalConsole",
+                "justMyCode": false
+            }
+        ]
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-python.python",
+            "ms-python.isort",
+            "Vue.volar",
+            "Vue.vscode-typescript-vue-plugin",
+        ]
+    }
+}

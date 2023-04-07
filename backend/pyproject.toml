@@ -1,0 +1,81 @@
+[project]
+name = "personal_website"
+version = "0.0.1"
+authors = [
+    { name="Aleksandrov Nikita", email="dev@u-n-1-k.com" },
+]
+description = "A small example package"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Unix",
+]
+
+dependencies = [
+    "pydantic[email,dotenv]==1.10.8",
+    "sqlalchemy[mypy,asyncio]==2.0.7",
+    "asyncpg==0.27.0",
+    "uvicorn==0.21.1",
+    "gunicorn==20.1.0",
+    "fastapi==0.95.0",
+    "requests==2.28.2",
+    "python-multipart==0.0.5",
+    "aiofiles==23.1.0",
+    "alembic==1.10.4",
+    "pycron==3.0.0",
+    "pyTelegramBotAPI==4.14.0",
+    "python-json-logger==2.0.7"
+]
+
+[project.optional-dependencies]
+dev = [
+    "flake8==6.0.0",
+    "isort==5.12.0",
+    "black==23.3.0",
+    "mypy==1.1.1",
+    "pytest==7.2.2",
+    "pytest-cov==4.0.0",
+    "types-requests==2.31.0.2"
+]
+build = [
+    "build==0.10.0"
+]
+
+[project.urls]
+Documentation = "https://github.com/u-n-i-k/personal_website/"
+"Source code" = "https://github.com/u-n-i-k/personal_website/"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.flake8]
+max-line-length = 120
+exclude = [
+    "__pycache__",
+    "tests/*"
+]
+per-file-ignores = "__init__.py:F401"
+max-complexity = 10
+
+[tool.isort]
+default_section = "THIRDPARTY"
+known_first_party = "personal_website"
+profile = "black"
+
+[tool.mypy]
+plugins = "pydantic.mypy"
+exclude = "venv"
+files = "**/*.py"
+disallow_untyped_defs = true
+no_implicit_optional = true
+check_untyped_defs = true
+warn_return_any = true
+warn_unused_ignores = true
+show_error_codes = true
+
+[[tool.mypy.overrides]]
+module = "gunicorn.*,pycron.*"
+ignore_missing_imports = true

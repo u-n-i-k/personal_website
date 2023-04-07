@@ -1,0 +1,49 @@
+{
+  "header": {
+    "choose_lang": "Choose locale:",
+    "change_theme": "Change theme:",
+    "navigation": {
+      "about": "About me / Work",
+      "other": "Pet-projects"
+    }
+  },
+  "footer": {
+    "proposal": "See this website",
+    "source_code_link": "source code on"
+  },
+  "common": {
+	  "navigation": "Page navigation",
+    "about": {
+      "title": "About me"
+    },
+    "experience": {
+      "title": "Experience",
+      "now": "now",
+      "at": "at"
+    },
+    "contacts": {
+      "title": "Contacts",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Submit",
+      "sending": "Sending..",
+      "sent": "Sent",
+      "error": "Error! Retry"
+    },
+    "my_name": "Nikita Aleksandrov",
+    "title_ending": "'s personal website"
+  },
+  "pages": {
+    "about": {
+      "navigation": {
+        "about": "About",
+        "work": "Work",
+        "contacts": "Contacts"
+      }
+    },
+    "other": {
+      "not_ready": "This page is not ready yet.. :)"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  db:
+    env_file:
+      - db/.env.production
+    volumes:
+    - "prod_dbdata:/var/lib/postgresql/data"
+
+  backend:
+    build:
+      context: ./backend
+      args:
+        - environment=prod
+
+
+  tg_sender:
+    build:
+      context: ./backend
+      args:
+        - environment=prod
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        - environment=prod
+    env_file:
+      - frontend/.env.production
+
+volumes:
+  prod_dbdata:

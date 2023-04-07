@@ -1,0 +1,161 @@
+@import './base.css';
+
+html {
+  background-color: black;
+}
+
+.light {
+  --color-background: var(--color-1);
+  --color-background-2: var(--color-3);
+  --color-background-3: var(--color-2);
+  --color-text: var(--color-4);
+  --color-text-2: var(--color-3);
+  --color-text-3: var(--color-1);
+
+  --brightness: 100%;
+}
+
+.dark {
+  --color-background: var(--color-7);
+  --color-background-2: var(--color-5);
+  --color-background-3: var(--color-8);
+  --color-text: var(--color-2);
+  --color-text-2: var(--color-5);
+  --color-text-3: var(--color-7);
+
+  --brightness: 70%;
+}
+
+html {
+  line-height: 1.6;
+  font-family: UbuntuMono;
+  font-size: 18px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+
+  margin: 0;
+  padding: 0;
+
+  font-weight: normal;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+	transition: background 0.2s ease-in-out;
+
+  color: var(--color-text);
+  background: var(--color-background);
+
+  overflow: hidden;
+}
+
+* {
+  list-style: none;
+  text-decoration: none;
+  scrollbar-width: none;
+  font-family: UbuntuMono;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+a {
+  color: var(--color-text-2);
+  padding: .2rem;
+  margin: -.2rem;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: var(--color-background-2);
+    color: var(--color-text-3);
+  }
+}
+
+header,
+main,
+footer {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+header,
+footer {
+  flex-shrink: 0;
+}
+
+main {
+  flex-grow: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.scrollable-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.wrapper {
+  display: flex;
+  width: calc(100% - 20px);
+  max-width: 1280px;
+  height: 100%;
+}
+
+@media screen and (max-width: 719px) {
+  main .wrapper {
+    flex-direction: column;
+  }
+  .scrollable-content {
+    overflow:visible;
+  }
+}
+
+a.headerlink {
+  visibility: hidden;
+}
+*:hover > a.headerlink {
+  visibility: visible;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
+  position: absolute;
+}
+
+input {
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  background: var(--color-background-2);
+  color: var(--color-text-3);
+}
+
+textarea {
+  width: 100%;
+  background: var(--color-background-2);
+  color: var(--color-text-3);
+  outline: none;
+  border: none;
+  font-size: 1rem;
+}
+
+.hidden {
+  display: none !important;
+}

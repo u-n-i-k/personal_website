@@ -1,0 +1,74 @@
+version: "3.9"
+
+services:
+
+  proxy:
+    build:
+      context: ./proxy
+    image: u-n-1-k/proxy
+    depends_on:
+      - frontend
+    ports:
+      - "${EXTERNAL_PORT:?error}:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -O /dev/null http://localhost:8080 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: on-failure
+
+  db:
+    build:
+      context: ./db
+    image: u-n-1-k/db
+    expose:
+      - "5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pw -d pw"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: on-failure
+
+  backend:
+    build:
+      context: ./backend
+    image: u-n-1-k/backend
+    depends_on:
+      - db
+    expose: 
+      - "8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/utils/ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+    restart: on-failure
+
+  tg_sender:
+    build:
+      context: ./backend
+    image: u-n-1-k/backend
+    entrypoint: ["python", "-m", "personal_website", "--job", "pycron", "--job-args", "0 20 * * *", "TelegramMessagesSender"]
+    depends_on:
+    - db
+    restart: on-failure
+
+  frontend:
+    build:
+      context: ./frontend
+    image: u-n-1-k/frontend
+    depends_on:
+      - backend
+    expose:
+      - "8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: on-failure

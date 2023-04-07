@@ -1,0 +1,49 @@
+{
+	"header": {
+		"choose_lang": "Выбрать язык:",
+		"change_theme": "Сменить тему:",
+		"navigation": {
+			"about": "Обо мне / опыт",
+			"other": "Личные проекты"
+		}
+	},
+	"footer": {
+		"proposal": "Посмотреть",
+		"source_code_link": "код этого сайта на"
+	},
+	"common": {
+	  "navigation": "Содержание",
+      "about": {
+        "title": "Обо мне"
+      },
+	  "experience": {
+	    "title": "Опыт работы",
+		"now": "по текущее время",
+		"at": "в"
+	  },
+      "contacts": {
+        "title": "Контакты",
+		"name": "Имя",
+		"email": "Почта",
+		"message": "Сообщение",
+		"submit": "Отправить",
+		"sending": "Отправляем..",
+		"sent": "Отправлено",
+		"error": "Ошибка! Попробовать снова"
+      },
+	  "my_name": "Никита Александров",
+	  "title_ending": " - персональный сайт"
+	},
+	"pages": {
+	  "about": {
+		"navigation": {
+		  "about": "Обо мне",
+		  "work": "Опыт работы",
+		  "contacts": "Контакты"
+		}
+	  },
+	  "other": {
+		"not_ready": "Эта страница пока не готова.. :)"
+	  }
+	}
+}

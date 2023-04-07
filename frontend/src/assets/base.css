@@ -1,0 +1,46 @@
+/* base variables */
+:root {
+  --color-1: #e2e2e2;
+  --color-2: #b5b5b5;
+  --color-3: #838383;
+  --color-4: #202020;
+  --color-5: #00a66f;
+  --color-7: #191923;
+  --color-8: #14141c;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+}
+
+@font-face {
+  font-family: UbuntuMono;
+  src: url('./fonts/UbuntuMono-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: UbuntuMono;
+  src: url('./fonts/UbuntuMono-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: UbuntuMono;
+  src: url('./fonts/UbuntuMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: UbuntuMono;
+  src: url('./fonts/UbuntuMono-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
